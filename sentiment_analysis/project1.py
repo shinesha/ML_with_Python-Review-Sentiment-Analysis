@@ -94,6 +94,16 @@ def perceptron_single_step_update(
     completed.
     """
     # Your code here
+
+    eps = 1e-8
+
+    agreement = float(label * (current_theta.dot(feature_vector) + current_theta_0))
+
+    if abs(agreement) < eps or agreement < 0:  # 1st condition to check if = 0
+        current_theta = current_theta + label * feature_vector
+        current_theta_0 = current_theta_0 + label
+
+    return (current_theta, current_theta_0)
     raise NotImplementedError
 #pragma: coderesponse end
 
