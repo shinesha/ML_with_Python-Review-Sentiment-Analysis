@@ -62,6 +62,10 @@ def hinge_loss_full(feature_matrix, labels, theta, theta_0):
     loss across all of the points in the feature matrix.
     """
     # Your code here
+    h_loss = 1 - labels * (np.dot(theta, feature_matrix.T) + theta_0)
+    h_loss[h_loss < 0] = 0
+
+    return h_loss.mean()
     raise NotImplementedError
 #pragma: coderesponse end
 
